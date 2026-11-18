@@ -1,0 +1,1 @@
+import { handler as netlifyHandler } from "../netlify/functions/verify-code.js"; export default async function handler(req, res) { const bodyStr = typeof req.body === "string" ? req.body : JSON.stringify(req.body || {}); const result = await netlifyHandler({ httpMethod: req.method, body: bodyStr }); res.status(result.statusCode).json(JSON.parse(result.body)); }
