@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Production build
+dist/
+
+# Vercel
+.vercel/
+
+# Netlify
+.netlify/
+
+# Environment secrets — never commit
+.env
+.env.*
+.env.local
+.env.development
+.env.production
+.env.preview
+
+# Logs & OS noise
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db

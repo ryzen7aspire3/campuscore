@@ -1,0 +1,32 @@
+{
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store, max-age=0"
+        }
+      ]
+    }
+  ],
+  "functions": {
+    "api/school-assistant.js": {
+      "maxDuration": 60
+    },
+    "api/send-counselor-otp.js": {
+      "maxDuration": 30
+    }
+  }
+}

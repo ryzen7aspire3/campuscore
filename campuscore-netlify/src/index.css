@@ -1,3 +1,229 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ============================================================
+   CampusCore — Obsidian Design System
+   ============================================================ */
+
+:root {
+  color-scheme: dark;
+  --obsidian: #06080e;
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--obsidian);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background-color: var(--obsidian);
+  background-image:
+    radial-gradient(ellipse 60% 42% at 12% -8%, rgba(99, 102, 241, 0.17), transparent 62%),
+    radial-gradient(ellipse 46% 34% at 92% -2%, rgba(34, 211, 238, 0.1), transparent 60%),
+    radial-gradient(ellipse 55% 44% at 50% 112%, rgba(168, 85, 247, 0.08), transparent 66%);
+  background-attachment: fixed;
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "ss01" on, "cv11" on;
+  color: #e2e8f0;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(99, 102, 241, 0.45);
+  color: #ffffff;
+}
+
+/* ---------- Scrollbars ---------- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #06080e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #1e293b, #162032);
+  border: 2px solid #06080e;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #334155, #1e293b);
+}
+
+::-webkit-scrollbar-corner {
+  background: #06080e;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #273449 #06080e;
+}
+
+/* ---------- Reusable utilities ---------- */
+@layer components {
+  .glass {
+    @apply border border-white/10 bg-slate-900/60 shadow-glass backdrop-blur-xl;
+  }
+
+  .glass-strong {
+    @apply border border-white/10 bg-slate-950/85 shadow-glass backdrop-blur-2xl;
+  }
+
+  .glass-soft {
+    @apply border border-white/[0.07] bg-white/[0.03] backdrop-blur-lg;
+  }
+
+  .glass-hover {
+    @apply transition-all duration-300 hover:border-white/20 hover:bg-slate-900/75 hover:shadow-glow-indigo;
+  }
+
+  .card {
+    @apply glass rounded-2xl;
+  }
+
+  .card-pad {
+    @apply glass rounded-2xl p-5 sm:p-6;
+  }
+
+  .label {
+    @apply mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400;
+  }
+
+  .input-base {
+    @apply w-full rounded-xl border border-white/10 bg-slate-950/70 px-3.5 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 outline-none transition-all duration-200 focus:border-indigo-400/60 focus:bg-slate-950/90 focus:ring-2 focus:ring-indigo-500/20;
+  }
+
+  .select-base {
+    @apply input-base appearance-none pr-10;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%2394a3b8' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+  }
+
+  .btn {
+    @apply inline-flex select-none items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400/60 disabled:cursor-not-allowed disabled:opacity-45;
+  }
+
+  .btn-primary {
+    @apply btn bg-gradient-to-r from-indigo-500 to-cyan-500 text-white shadow-glow-indigo hover:from-indigo-400 hover:to-cyan-400 hover:shadow-glow-cyan active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply btn border border-white/10 bg-white/[0.04] text-slate-200 hover:border-white/20 hover:bg-white/[0.08] active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply btn text-slate-300 hover:bg-white/[0.06] hover:text-white;
+  }
+
+  .btn-danger {
+    @apply btn border border-rose-500/30 bg-rose-500/10 text-rose-300 hover:bg-rose-500/20;
+  }
+
+  .btn-gold {
+    @apply btn bg-gradient-to-r from-amber-400 to-yellow-300 text-slate-950 shadow-glow-amber hover:from-amber-300 hover:to-yellow-200 active:scale-[0.98];
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[11px] font-semibold text-slate-300;
+  }
+
+  .chip-active {
+    @apply border-indigo-400/40 bg-indigo-500/15 text-indigo-200 shadow-glow-indigo;
+  }
+
+  .eyebrow {
+    @apply font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-indigo-300/80;
+  }
+
+  .metric {
+    @apply font-mono tabular-nums tracking-tight;
+  }
+
+  .divider {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-white via-indigo-100 to-cyan-200 bg-clip-text text-transparent;
+  }
+
+  .ring-pulse {
+    animation: pulse-ring 2.4s ease-out infinite;
+  }
+}
+
+/* ---------- Native form refinements ---------- */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: #e2e8f0;
+  -webkit-box-shadow: 0 0 0 1000px #0b0f19 inset;
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: #e2e8f0;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* ---------- Chronicler / assistant prose ---------- */
+.prose-chronicle p {
+  margin-bottom: 1rem;
+  line-height: 1.8;
+  color: #cbd5e1;
+}
+
+.prose-chronicle p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Ambient floating orbs ---------- */
+.orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(110px);
+  pointer-events: none;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
